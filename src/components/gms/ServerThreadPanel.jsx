@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { X, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Glass } from "@/components/ui/liquid-glass";
 import { base44 } from "@/api/base44Client";
 import { getDisplayName } from "@/lib/useCurrentUser";
 import UserAvatar from "../chat/UserAvatar";
@@ -37,7 +38,7 @@ export default function ServerThreadPanel({ parentMessage, currentUser, onClose 
   if (!parentMessage) return null;
 
   return (
-    <div className="w-80 flex flex-col h-full border-l border-white/50 animate-slide-in-right" style={{ background: "rgba(255,255,255,0.30)", backdropFilter: "blur(20px)" }}>
+    <Glass className="w-80 flex flex-col h-full border-l border-white/50 animate-slide-in-right" variant="subtle">
       <div className="flex items-center justify-between px-4 py-3 border-b border-white/50">
         <h3 className="font-semibold text-sm">Thread</h3>
         <Button size="icon" variant="ghost" onClick={onClose} className="h-7 w-7"><X className="h-4 w-4" /></Button>
@@ -71,7 +72,7 @@ export default function ServerThreadPanel({ parentMessage, currentUser, onClose 
       </div>
 
       <div className="px-3 pb-3 pt-1">
-        <div className="flex items-center gap-2 rounded-xl p-2 border border-white/70" style={{ background: "rgba(255,255,255,0.5)" }}>
+        <Glass className="flex items-center gap-2 rounded-xl p-2" variant="default">
           <input
             value={text}
             onChange={e => setText(e.target.value)}
@@ -82,8 +83,8 @@ export default function ServerThreadPanel({ parentMessage, currentUser, onClose 
           <Button onClick={send} disabled={!text.trim()} size="icon" className="h-7 w-7 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 border-0 flex-shrink-0">
             <Send className="h-3 w-3" />
           </Button>
-        </div>
+        </Glass>
       </div>
-    </div>
+    </Glass>
   );
 }

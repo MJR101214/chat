@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Plus, Heart, Share2, ChevronUp, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Glass } from "@/components/ui/liquid-glass";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { base44 } from "@/api/base44Client";
@@ -270,15 +271,17 @@ export default function VideoFeed({ currentUser }) {
       )}
 
       <Dialog open={addOpen} onOpenChange={setAddOpen}>
-        <DialogContent className="max-w-sm" style={{ background: "rgba(255,255,255,0.85)", backdropFilter: "blur(24px)" }}>
-          <DialogHeader><DialogTitle>Share a YouTube Video</DialogTitle></DialogHeader>
-          <div className="space-y-3">
-            <Input value={newUrl} onChange={e => setNewUrl(e.target.value)} placeholder="https://youtu.be/..." className="bg-white/70 border-white/90" />
-            <Input value={newTitle} onChange={e => setNewTitle(e.target.value)} placeholder="Title (optional)" className="bg-white/70 border-white/90" />
-            <Button onClick={addPost} disabled={adding || !newUrl.trim()} className="w-full bg-red-600 hover:bg-red-700 text-white border-0">
-              {adding ? "Sharing..." : "Share"}
-            </Button>
-          </div>
+        <DialogContent className="max-w-sm">
+          <Glass className="p-6" variant="default">
+            <DialogHeader><DialogTitle>Share a YouTube Video</DialogTitle></DialogHeader>
+            <div className="space-y-3">
+              <Input value={newUrl} onChange={e => setNewUrl(e.target.value)} placeholder="https://youtu.be/..." className="bg-white/70 border-white/90" />
+              <Input value={newTitle} onChange={e => setNewTitle(e.target.value)} placeholder="Title (optional)" className="bg-white/70 border-white/90" />
+              <Button onClick={addPost} disabled={adding || !newUrl.trim()} className="w-full bg-red-600 hover:bg-red-700 text-white border-0">
+                {adding ? "Sharing..." : "Share"}
+              </Button>
+            </div>
+          </Glass>
         </DialogContent>
       </Dialog>
     </div>

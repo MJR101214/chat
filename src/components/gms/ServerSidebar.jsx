@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Megaphone, ChevronDown, ChevronRight, Settings, Volume2, Mic, MicOff } from "lucide-react";
+import { Glass } from "@/components/ui/liquid-glass";
 import { getDisplayName, getUsername } from "@/lib/useCurrentUser";
 import UserAvatar from "../chat/UserAvatar";
 
@@ -58,7 +59,7 @@ export default function ServerSidebar({ server, channels, activeChannelId, onSel
   };
 
   return (
-    <div className="w-60 flex flex-col h-full border-r border-white/25 flex-shrink-0" style={{ background: "rgba(255,255,255,0.12)", backdropFilter: "blur(28px) saturate(180%)", WebkitBackdropFilter: "blur(28px) saturate(180%)" }}>
+    <Glass contentClassName="w-60 flex flex-col h-full border-r border-white/25 flex-shrink-0" variant="default">
       {/* Server header */}
       <div className="px-4 py-3.5 border-b border-white/20 flex items-center gap-2.5">
         <div className="h-8 w-8 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white font-bold text-sm shadow-sm flex-shrink-0">
@@ -122,6 +123,6 @@ export default function ServerSidebar({ server, channels, activeChannelId, onSel
           <Settings className="h-3.5 w-3.5 text-muted-foreground" />
         </button>
       </div>
-    </div>
+    </Glass>
   );
 }

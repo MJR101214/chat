@@ -96,5 +96,26 @@ module.exports = {
     'bg-purple-400','bg-blue-400','bg-pink-400','bg-green-400',
     'bg-amber-400','bg-cyan-400','bg-red-400','bg-indigo-400',
   ],
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function({ addUtilities }) {
+      addUtilities({
+        '.glass': {
+          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+        },
+        '.glass-sm': {
+          backgroundColor: 'rgba(255, 255, 255, 0.08)',
+          backdropFilter: 'blur(8px)',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
+        },
+        '.glass-lg': {
+          backgroundColor: 'rgba(255, 255, 255, 0.15)',
+          backdropFilter: 'blur(16px)',
+          border: '1px solid rgba(255, 255, 255, 0.25)',
+        },
+      })
+    }
+  ],
 }

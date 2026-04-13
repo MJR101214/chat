@@ -3,6 +3,7 @@ import { Settings } from "lucide-react";
 import { Plus, Search, Send, Phone, PhoneOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Glass } from "@/components/ui/liquid-glass";
 import { base44 } from "@/api/base44Client";
 import { getDisplayName, getUsername } from "@/lib/useCurrentUser";
 import UserAvatar from "../chat/UserAvatar";
@@ -35,7 +36,7 @@ function CallOverlay({ callee, onHangUp }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-      <div className="glass rounded-3xl p-8 flex flex-col items-center gap-5 w-72 animate-pop">
+      <Glass contentClassName="rounded-3xl p-8 flex flex-col items-center gap-5 w-72 animate-pop" variant="bold">
         <UserAvatar name={callee} size="xl" />
         <div className="text-center">
           <p className="font-bold text-lg">{callee}</p>
@@ -49,7 +50,7 @@ function CallOverlay({ callee, onHangUp }) {
             <PhoneOff className="h-6 w-6 text-white" />
           </button>
         </div>
-      </div>
+      </Glass>
     </div>
   );
 }
@@ -100,7 +101,7 @@ function ChatPane({ convo, currentUser, allUsers }) {
     <div className="flex-1 flex flex-col h-full min-w-0">
       {calling && <CallOverlay callee={otherName} onHangUp={() => setCalling(false)} />}
 
-      <div className="h-14 flex items-center gap-3 px-5 border-b border-white/50 flex-shrink-0" style={{ background: "rgba(255,255,255,0.35)", backdropFilter: "blur(16px)" }}>
+      <Glass contentClassName="h-14 flex items-center gap-3 px-5 flex-shrink-0" variant="default">
         <UserAvatar name={otherName} email={otherEmail} size="sm" />
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5">
@@ -116,7 +117,7 @@ function ChatPane({ convo, currentUser, allUsers }) {
         >
           <Phone className="h-4 w-4 text-white" />
         </button>
-      </div>
+      </Glass>
 
       <div className="flex-1 overflow-y-auto px-3 py-3 space-y-0.5">
         {messages.map(msg => {
@@ -138,7 +139,7 @@ function ChatPane({ convo, currentUser, allUsers }) {
       </div>
 
       <div className="px-4 pb-4 pt-2 flex-shrink-0">
-        <div className="flex items-center gap-2 rounded-2xl p-2 border border-white/70" style={{ background: "rgba(255,255,255,0.5)", backdropFilter: "blur(12px)" }}>
+        <Glass contentClassName="flex items-center gap-2 rounded-2xl p-2" variant="default">
           <input
             value={text}
             onChange={e => setText(e.target.value)}
@@ -146,10 +147,10 @@ function ChatPane({ convo, currentUser, allUsers }) {
             placeholder={`Message ${otherName}...`}
             className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none py-1.5"
           />
-          <Button onClick={send} disabled={!text.trim()} size="icon" className="h-9 w-9 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 border-0 flex-shrink-0">
+          <Button onClick={send} disabled={!text.trim()} size="icon" className="h-9 w-9 rounded-xl border-0 flex-shrink-0">
             <Send className="h-4 w-4" />
           </Button>
-        </div>
+        </Glass>
       </div>
     </div>
   );
@@ -194,7 +195,7 @@ export default function DmSection({ currentUser, allUsers, onOpenProfile, onOpen
 
   return (
     <div className="flex-1 flex h-full min-w-0">
-      <div className="w-60 flex-shrink-0 flex flex-col border-r border-white/50 h-full" style={{ background: "rgba(255,255,255,0.25)", backdropFilter: "blur(20px)" }}>
+      <Glass contentClassName="w-60 flex-shrink-0 flex flex-col h-full border-r border-white/50" variant="subtle">
         <div className="p-3 space-y-2 border-b border-white/50">
           <div className="flex items-center justify-between">
             <span className="text-sm font-semibold">Direct Messages</span>
@@ -260,8 +261,7 @@ export default function DmSection({ currentUser, allUsers, onOpenProfile, onOpen
             <Settings className="h-3.5 w-3.5 text-muted-foreground" />
           </button>
         </div>
-      </div>
-
+      </Glass>
       <ChatPane convo={activeConvo} currentUser={currentUser} allUsers={allUsers} />
     </div>
   );

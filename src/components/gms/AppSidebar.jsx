@@ -1,4 +1,5 @@
 import { MessageCircle, Tv2, Users } from "lucide-react";
+import { Glass } from "@/components/ui/liquid-glass";
 import { cn } from "@/lib/utils";
 
 const TABS = [
@@ -9,11 +10,11 @@ const TABS = [
 
 export default function AppSidebar({ activeTab, onChangeTab, servers, activeServerId, onSelectServer }) {
   return (
-    <div className="w-16 flex flex-col items-center py-3 gap-2 border-r border-white/50 flex-shrink-0" style={{ background: "rgba(255,255,255,0.25)", backdropFilter: "blur(20px)" }}>
+    <Glass contentClassName="w-16 flex flex-col items-center py-3 gap-2 border-r border-white/50 flex-shrink-0" variant="subtle">
       {/* Logo */}
-      <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center shadow-md mb-1">
-        <span className="text-white font-black text-xs">GMS</span>
-      </div>
+      <Glass className="w-10 h-10 flex items-center justify-center shadow-md mb-1">
+        <span className="text-gray-300 text-xs">g m s</span>
+      </Glass>
       <div className="w-8 h-px bg-white/50 mb-1" />
 
       {/* Server icons */}
@@ -23,7 +24,7 @@ export default function AppSidebar({ activeTab, onChangeTab, servers, activeServ
           onClick={() => { onSelectServer(s.id); onChangeTab("servers"); }}
           title={s.name}
           className={cn(
-            "h-10 w-10 rounded-2xl flex items-center justify-center font-bold text-sm text-white shadow-sm transition-all hover:scale-105",
+            "h-10 w-10 rounded-2xl flex items-center justify-center text-sm text-white shadow-md transition-all hover:scale-105",
             activeServerId === s.id && activeTab === "servers"
               ? "bg-gradient-to-br from-blue-500 to-cyan-400 shadow-md scale-105"
               : "bg-gradient-to-br from-blue-300 to-cyan-300 opacity-70 hover:opacity-100"
@@ -51,6 +52,6 @@ export default function AppSidebar({ activeTab, onChangeTab, servers, activeServ
           <t.icon className="h-5 w-5" />
         </button>
       ))}
-    </div>
+    </Glass>
   );
 }

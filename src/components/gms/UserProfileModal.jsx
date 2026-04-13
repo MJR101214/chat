@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { X, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Glass } from "@/components/ui/liquid-glass";
 import { base44 } from "@/api/base44Client";
 import { getDisplayName, getUsername } from "@/lib/useCurrentUser";
 import UserAvatar from "../chat/UserAvatar";
@@ -33,9 +34,9 @@ export default function UserProfileModal({ user, currentUser, onClose, onStartDm
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/20 backdrop-blur-sm" onClick={onClose}>
-      <div
+      <Glass
         className="w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl animate-pop"
-        style={{ background: "rgba(255,255,255,0.25)", backdropFilter: "blur(32px) saturate(180%)", border: "1px solid rgba(255,255,255,0.4)" }}
+        variant="default"
         onClick={e => e.stopPropagation()}
       >
         {/* Banner */}
@@ -71,21 +72,21 @@ export default function UserProfileModal({ user, currentUser, onClose, onStartDm
             </div>
 
             {user.bio && (
-              <div className="rounded-2xl p-3" style={{ background: "rgba(255,255,255,0.3)" }}>
+              <Glass className="rounded-2xl p-3" variant="ghost">
                 <p className="text-xs font-semibold text-foreground/50 mb-1 uppercase tracking-wide">About</p>
                 <p className="text-sm text-foreground/80">{user.bio}</p>
-              </div>
+              </Glass>
             )}
 
             {messages.length > 0 && (
-              <div className="rounded-2xl p-3" style={{ background: "rgba(255,255,255,0.3)" }}>
+              <Glass className="rounded-2xl p-3" variant="ghost">
                 <p className="text-xs font-semibold text-foreground/50 mb-2 uppercase tracking-wide">Recent Messages</p>
                 <div className="space-y-1.5">
                   {messages.slice(0, 3).map(m => (
                     <p key={m.id} className="text-xs text-foreground/70 line-clamp-1">"{m.content}"</p>
                   ))}
                 </div>
-              </div>
+              </Glass>
             )}
 
             <p className="text-[10px] text-muted-foreground text-center">
@@ -93,7 +94,7 @@ export default function UserProfileModal({ user, currentUser, onClose, onStartDm
             </p>
           </div>
         </div>
-      </div>
+      </Glass>
     </div>
   );
 }

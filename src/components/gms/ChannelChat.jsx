@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Megaphone, SmilePlus, MessageSquare, Trash2, Send, Paperclip, X, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Glass } from "@/components/ui/liquid-glass";
 import { base44 } from "@/api/base44Client";
 import { getDisplayName } from "@/lib/useCurrentUser";
 import UserAvatar from "../chat/UserAvatar";
@@ -192,10 +193,10 @@ export default function ChannelChat(/** @type {{channel: any, currentUser: User,
   return (
     <div className="flex-1 flex flex-col min-w-0 h-full">
       {/* Header */}
-      <div className="h-14 flex items-center gap-2.5 px-5 border-b border-white/20 flex-shrink-0" style={{ background: "rgba(255,255,255,0.12)", backdropFilter: "blur(28px) saturate(180%)" }}>
+      <Glass className="h-14 flex items-center gap-2.5 px-5 border-b border-white/20 flex-shrink-0" variant="default">
         {channel.type === "announcement" ? <Megaphone className="h-4 w-4 text-primary" /> : null}
         <span className="font-semibold text-sm">{channel.name}</span>
-      </div>
+      </Glass>
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto px-2 py-3">
@@ -224,7 +225,7 @@ export default function ChannelChat(/** @type {{channel: any, currentUser: User,
             <button onClick={() => setPendingFile(null)}><X className="h-3.5 w-3.5 text-muted-foreground" /></button>
           </div>
         )}
-        <div className="flex items-end gap-2 rounded-2xl p-2 border border-white/40 shadow-sm" style={{ background: "rgba(255,255,255,0.18)", backdropFilter: "blur(20px)" }}>
+        <Glass className="flex items-end gap-2 rounded-2xl p-2 border-0 shadow-sm" variant="default">
           <input type="file" ref={fileRef} className="hidden" onChange={handleFile} />
           <button onClick={() => fileRef.current?.click()} disabled={uploading} className="h-9 w-9 flex items-center justify-center rounded-xl hover:bg-white/40 transition-colors text-muted-foreground flex-shrink-0">
             {uploading ? <div className="w-4 h-4 border-2 border-primary/30 border-t-primary rounded-full animate-spin" /> : <Paperclip className="h-4 w-4" />}
@@ -241,7 +242,7 @@ export default function ChannelChat(/** @type {{channel: any, currentUser: User,
           <Button onClick={send} disabled={!text.trim() && !pendingFile} size="icon" className="h-9 w-9 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 border-0 shadow-sm hover:from-blue-600 hover:to-cyan-500 flex-shrink-0">
             <Send className="h-4 w-4" />
           </Button>
-        </div>
+        </Glass>
       </div>
     </div>
   );

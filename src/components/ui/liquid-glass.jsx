@@ -81,6 +81,7 @@ const Glass = rawProps => {
     variant = "default",
     children,
     className = "",
+    contentClassName = "",
     style = {},
     width,
     height,
@@ -357,7 +358,7 @@ const Glass = rawProps => {
         </defs>
       </svg>
 
-      <div className="w-full h-full flex items-center justify-center p-2 rounded-[inherit] relative z-10">
+      <div className={cn("w-full h-full flex items-center justify-center p-2 rounded-[inherit] relative z-10", contentClassName)}>
         {children}
       </div>
     </div>;
@@ -394,3 +395,4 @@ const GlassButton = ({
     </button>;
 };
 export default GlassButton;
+export { Glass };

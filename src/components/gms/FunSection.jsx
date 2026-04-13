@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Gamepad2, Tv2 } from "lucide-react";
+import { Glass } from "@/components/ui/liquid-glass";
 import WordleGame from "./WordleGame";
 import VideoFeed from "./VideoFeed";
 
@@ -14,7 +15,7 @@ export default function FunSection({ currentUser }) {
   return (
     <div className="flex-1 flex flex-col h-full min-w-0">
       {/* Header */}
-      <div className="h-14 flex items-center gap-4 px-5 border-b border-white/50 flex-shrink-0" style={{ background: "rgba(255,255,255,0.35)", backdropFilter: "blur(16px)" }}>
+      <Glass className="h-14 flex items-center gap-4 px-5 border-b border-white/50 flex-shrink-0" variant="subtle">
         <span className="font-bold text-sm bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Fun Zone</span>
         <div className="flex gap-1">
           {TABS.map(t => (
@@ -27,7 +28,7 @@ export default function FunSection({ currentUser }) {
             </button>
           ))}
         </div>
-      </div>
+      </Glass>
 
       {tab === "videos" && <VideoFeed currentUser={currentUser} />}
       {tab === "wordle" && (

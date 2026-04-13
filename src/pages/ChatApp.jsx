@@ -69,7 +69,7 @@ export default function ChatApp() {
         <div className="h-screen flex items-center justify-center">
           <div className="text-center animate-fade-up">
             <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-4 shadow-xl">
-              <span className="text-white font-black text-xl">GMS</span>
+              <span className="text-white font-black text-xl">g m s</span>
             </div>
             <div className="w-6 h-6 border-2 border-purple-300 border-t-purple-600 rounded-full animate-spin mx-auto" />
           </div>
@@ -95,7 +95,7 @@ export default function ChatApp() {
         />
       )}
 
-      <div className="h-screen flex overflow-hidden relative">
+      <div className="h-screen flex flex-row gap-3 overflow-hidden relative">
         {/* Left: thin app sidebar */}
         <AppSidebar
           activeTab={tab}
@@ -119,7 +119,7 @@ export default function ChatApp() {
         )}
 
         {/* Main content area */}
-        <div className="flex-1 flex min-w-0 overflow-hidden">
+        <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
           {tab === "servers" && appReady && (
             <>
               <ChannelChat channel={activeChannel} currentUser={user || undefined} onOpenThread={(/** @type {any} */ msg) => setThreadMessage(msg)} />

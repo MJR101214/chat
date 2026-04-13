@@ -138,7 +138,8 @@ export const localClient = {
     ServerMessage: new LocalEntity('ServerMessage'),
     VideoPost: new LocalEntity('VideoPost'),
     Friendship: new LocalEntity('Friendship'),
-    Message: new LocalEntity('Message')
+    Message: new LocalEntity('Message'),
+    Conversation: new LocalEntity('Conversation')
   }
 };
 
