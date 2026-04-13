@@ -1,0 +1,47 @@
+{
+  "name": "Message",
+  "type": "object",
+  "properties": {
+    "conversation_id": {
+      "type": "string",
+      "description": "ID of the conversation"
+    },
+    "sender_email": {
+      "type": "string"
+    },
+    "sender_name": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "thread_parent_id": {
+      "type": "string",
+      "description": "If this is a thread reply, the parent message ID"
+    },
+    "thread_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of thread replies (only on parent messages)"
+    },
+    "reactions": {
+      "type": "object",
+      "description": "Map of emoji to array of user emails",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "attachment_url": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "conversation_id",
+    "sender_email",
+    "sender_name",
+    "content"
+  ]
+}

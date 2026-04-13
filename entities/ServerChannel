@@ -1,0 +1,32 @@
+{
+  "name": "ServerChannel",
+  "type": "object",
+  "properties": {
+    "server_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "text",
+        "announcement",
+        "media"
+      ],
+      "default": "text"
+    },
+    "category": {
+      "type": "string"
+    },
+    "order": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "server_id",
+    "name"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Friendship",
+  "type": "object",
+  "properties": {
+    "from_user": {
+      "type": "string",
+      "description": "Email of the user who sent the request"
+    },
+    "to_user": {
+      "type": "string",
+      "description": "Email of the user who received the request"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "accepted",
+        "declined"
+      ],
+      "default": "pending"
+    }
+  },
+  "required": [
+    "from_user",
+    "to_user",
+    "status"
+  ]
+}

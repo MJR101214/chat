@@ -1,0 +1,51 @@
+{
+  "name": "VideoPost",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string",
+      "description": "YouTube, TikTok, etc. URL"
+    },
+    "embed_url": {
+      "type": "string",
+      "description": "Embed-friendly URL"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "youtube",
+        "other"
+      ]
+    },
+    "thumbnail": {
+      "type": "string"
+    },
+    "poster_email": {
+      "type": "string"
+    },
+    "poster_display": {
+      "type": "string"
+    },
+    "is_app_user": {
+      "type": "boolean",
+      "default": false
+    },
+    "likes": {
+      "type": "number",
+      "default": 0
+    },
+    "liked_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "url",
+    "poster_email"
+  ]
+}

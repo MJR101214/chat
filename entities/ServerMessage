@@ -1,0 +1,43 @@
+{
+  "name": "ServerMessage",
+  "type": "object",
+  "properties": {
+    "channel_id": {
+      "type": "string"
+    },
+    "server_id": {
+      "type": "string"
+    },
+    "sender_email": {
+      "type": "string"
+    },
+    "sender_display": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "thread_parent_id": {
+      "type": "string"
+    },
+    "thread_count": {
+      "type": "number",
+      "default": 0
+    },
+    "reactions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "channel_id",
+    "server_id",
+    "sender_email",
+    "content"
+  ]
+}
